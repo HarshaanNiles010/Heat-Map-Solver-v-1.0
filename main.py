@@ -36,14 +36,20 @@ def primeDiag(arr, coord_X, coord_Y):
     return tempArr
 
 
+# Implementing Secondary Diagonal
 def seconDiag(arr, coord_X, coord_Y):
     tempArr = arr.copy()
     x_Dim = tempArr.shape[0]
     y_Dim = tempArr.shape[1]
-    
+    #coord_X, coord_Y = coord_Y, coord_X
+    aux = np.ones(max(coord_X, coord_Y))
+    temp = int(mt.fabs(coord_X - coord_Y))
+    np.fill_diagonal(tempArr[::-1, temp:], aux)
+    print(tempArr)
 
-# arr = np.zeros((5,5))
-arr = np.random.rand(5, 5)
+
+arr = np.zeros((5, 5))
+# arr = np.random.rand(5, 5)
 coord_X, coord_Y = 1, 4
 # arr = rowPop(arr,coord_X,coord_Y)
 # arr = colPop(arr,coord_X,coord_Y)
