@@ -12,6 +12,12 @@ class Board:
         self.y_Dim = arr.shape[1]
         self.tempArr = arr.copy()
 
+    def get_x_dim(self):
+        return self.x_Dim
+
+    def get_y_dim(self):
+        return self.y_Dim
+
     def rowPop(self, coord_X, coord_Y):
         for i in range(self.x_Dim):
             for j in range(self.y_Dim):
@@ -35,6 +41,9 @@ class Board:
     def Print_Dim(self):
         print(f"The array is: \n{self.tempArr}\n The X-Dimension is: {self.x_Dim}\n The Y-Dimension is: {self.y_Dim}")
 
+
+
+
 # Implementing Secondary Diagonal
 def seconDiag(arr, coord_X, coord_Y):
     tempArr = arr.copy()
@@ -47,9 +56,10 @@ def seconDiag(arr, coord_X, coord_Y):
     print(tempArr)
 
 
-arr = np.zeros((5, 5))
-# arr = np.random.rand(5, 5)
-coord_X, coord_Y = 1, 4
-#seconDiag(arr, coord_X, coord_Y)
-B0 = Board(arr)
-B0.Print_Dim()
+if __name__ == '__main__':
+    arr = np.zeros((5, 5))
+    # arr = np.random.rand(5, 5)
+    coord_X, coord_Y = 1, 4
+    # seconDiag(arr, coord_X, coord_Y)
+    B0 = Board(arr)
+
