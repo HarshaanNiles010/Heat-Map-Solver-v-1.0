@@ -18,6 +18,9 @@ class Board:
     def get_y_dim(self):
         return self.y_Dim
 
+    def Print_Dim(self):
+        print(f"The array is: \n{self.tempArr}\n The X-Dimension is: {self.x_Dim}\n The Y-Dimension is: {self.y_Dim}")
+
     def rowPop(self, coord_X, coord_Y):
         for i in range(self.x_Dim):
             for j in range(self.y_Dim):
@@ -38,8 +41,7 @@ class Board:
         np.fill_diagonal(self.tempArr[:, temp:], aux)
         return self.tempArr
 
-    def Print_Dim(self):
-        print(f"The array is: \n{self.tempArr}\n The X-Dimension is: {self.x_Dim}\n The Y-Dimension is: {self.y_Dim}")
+
 
 
 
