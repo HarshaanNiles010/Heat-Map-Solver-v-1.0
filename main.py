@@ -35,27 +35,26 @@ class Board:
                     self.tempArr[i][coord_Y] = 1
         return self.tempArr
 
-    def primeDiag(self, coord_X, coord_Y):
+    def primeDiagPop(self, coord_X, coord_Y):
         aux = np.ones(max(coord_X, coord_Y))
         temp = int(mt.fabs(coord_X - coord_Y))
         np.fill_diagonal(self.tempArr[:, temp:], aux)
         return self.tempArr
 
-# implementing a method to get the 8 squares around the coordinate of choice
-def get_neighbours(arr,coord_X,coord_Y):
-    tempArr = arr.copy()
-    #tempArr = tempArr.tolist()
-    result = []
-    for rowAdd in range(-1,2):
-        newRow = coord_X + rowAdd
-        if newRow >= 0 and newRow <= tempArr.shape[0] -1:
-            for colAdd in range(-1,2):
-                newCol = coord_Y + colAdd
-                if newCol >= 0 and newCol <= tempArr.shape[1] - 1:
-                    if newCol == coord_Y and newRow == coord_X:
-                        continue
-                    result.append((newRow,newCol))
-    return result
+    def neighbourPop(self,coord_X,coord_Y):
+        result = []
+        for rowAdd in range(-1,2):
+            newRow = coord_X + rowAdd
+            if newRow >= 0 and newRow <= self.x_Dim -1:
+                for colAdd in range(-1,2):
+                    newCol = coord_Y + colAdd
+                    if newCol >= 0 and newCol <= self.y_Dim - 1:
+                        if newCol == coord_Y and newRow == coord_X:
+                            continue
+                        result.append((newRow,newCol))
+        for i,j in result:
+            self.tempArr[i][j] = 1
+        return self.tempArr
 
 # Implementing Secondary Diagonal
 def seconDiag(arr, coord_X, coord_Y):
@@ -72,9 +71,7 @@ def seconDiag(arr, coord_X, coord_Y):
 if __name__ == '__main__':
     arr = np.zeros((5, 5))
     #arr = np.random.rand(5, 5)
-    print(arr)
-    coord_X, coord_Y = 1, 4
+    coord_X, coord_Y = 1, 1
     #seconDiag(arr, coord_X, coord_Y)
     #B0 = Board(arr)
-    get_neighbours(arr,coord_X,coord_Y)
 
