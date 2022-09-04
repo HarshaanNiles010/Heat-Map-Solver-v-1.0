@@ -41,6 +41,10 @@ class Board:
         np.fill_diagonal(self.tempArr[:, temp:], aux)
         return self.tempArr
 
+    def seconDiagPop(self, coord_X, coord_Y):
+        np.fill_diagonal(np.fliplr(self.tempArr[coord_X:, :coord_Y + 1]), 1)
+        return self.tempArr
+
     def neighbourPop(self,coord_X,coord_Y):
         result = []
         for rowAdd in range(-1,2):
@@ -56,22 +60,11 @@ class Board:
             self.tempArr[i][j] = 1
         return self.tempArr
 
-# Implementing Secondary Diagonal
-def seconDiag(arr, coord_X, coord_Y):
-    tempArr = arr.copy()
-    x_Dim = tempArr.shape[0]
-    y_Dim = tempArr.shape[1]
-    temp = []
-    for i in range(x_Dim):
-        for j in range(y_Dim):
-            if i+1 == j-1:
-                temp.append((i,j))
 
 
 if __name__ == '__main__':
-    arr = np.zeros((5, 5))
-    #arr = np.random.rand(5, 5)
-    coord_X, coord_Y = 1, 1
-    #seconDiag(arr, coord_X, coord_Y)
+    #arr = np.zeros((5, 5))
+    arr = np.random.rand(5, 5)
+    coord_X, coord_Y = 1, 4
     #B0 = Board(arr)
 
