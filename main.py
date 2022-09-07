@@ -49,10 +49,10 @@ class Board:
         result = []
         for rowAdd in range(-1,2):
             newRow = coord_X + rowAdd
-            if newRow >= 0 and newRow <= self.x_Dim -1:
+            if 0 <= newRow <= self.x_Dim -1:
                 for colAdd in range(-1,2):
                     newCol = coord_Y + colAdd
-                    if newCol >= 0 and newCol <= self.y_Dim - 1:
+                    if 0 <= newCol <= self.y_Dim - 1:
                         if newCol == coord_Y and newRow == coord_X:
                             continue
                         result.append((newRow,newCol))
@@ -61,14 +61,34 @@ class Board:
         return self.tempArr
 
 class Player:
-    def __init__(self):
+    def __init__(self,arr):
         self.currentPlayer = "B"
+        self.board = arr.copy()
+        self.moves = []
 
     def changePlayer(self):
         if self.currentPlayer == "B":
             return self.currentPlayer == "W"
         elif self.currentPlayer == "W":
             return self.currentPlayer == "B"
+
+    def getPlayer(self):
+        return self.currentPlayer
+
+    def setPlayer(self):
+        return self.currentPlayer
+
+    def legalMoves(self):
+        for i in range(self.board.shape[0]):
+            for j in range(self.board.shape[1]):
+                if self.board[i][j] == 0:
+                    self.moves.append((i,j))
+        return self.moves
+
+    def playMove(self,coord_X,coord_Y):
+        self.board[coord_X][coord_Y] = 10
+        return self.board
+
 
 if __name__ == '__main__':
     #arr = np.zeros((5, 5))
