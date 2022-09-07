@@ -60,7 +60,15 @@ class Board:
             self.tempArr[i][j] = 1
         return self.tempArr
 
+class Player:
+    def __init__(self):
+        self.currentPlayer = "B"
 
+    def changePlayer(self):
+        if self.currentPlayer == "B":
+            return self.currentPlayer == "W"
+        elif self.currentPlayer == "W":
+            return self.currentPlayer == "B"
 
 if __name__ == '__main__':
     #arr = np.zeros((5, 5))
