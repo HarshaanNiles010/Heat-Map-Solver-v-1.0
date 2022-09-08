@@ -75,7 +75,8 @@ class Player:
     def getPlayer(self):
         return self.currentPlayer
 
-    def setPlayer(self):
+    def setPlayer(self,player):
+        self.currentPlayer = player
         return self.currentPlayer
 
     def legalMoves(self):
@@ -89,10 +90,20 @@ class Player:
         self.board[coord_X][coord_Y] = 10
         return self.board
 
+    def playerLoop(self):
+        while self.moves:
+            move = random.choice(self.legalMoves())
+            for i,j in move:
+                self.playMove(i,j)
+            self.moves = self.legalMoves()
+
+
 
 if __name__ == '__main__':
-    #arr = np.zeros((5, 5))
-    arr = np.random.rand(5, 5)
+    arr = np.zeros((5, 5))
+    #arr = np.random.rand(5, 5)
     coord_X, coord_Y = 1, 4
     #B0 = Board(arr)
+    P0 = Player(arr)
+    P0.playerLoop()
 
