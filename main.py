@@ -62,15 +62,16 @@ class Board:
 
 class Player:
     def __init__(self,arr):
-        self.currentPlayer = "B"
+        self.currentPlayer = 'B'
         self.board = arr.copy()
+        self.board = self.board.astype(str)
         self.moves = []
 
     def changePlayer(self):
-        if self.currentPlayer == "B":
-            return self.currentPlayer == "W"
-        elif self.currentPlayer == "W":
-            return self.currentPlayer == "B"
+        if self.currentPlayer == 'B':
+            return self.currentPlayer == 'W'
+        elif self.currentPlayer == 'W':
+            return self.currentPlayer == 'B'
 
     def getPlayer(self):
         return self.currentPlayer
@@ -82,21 +83,24 @@ class Player:
     def legalMoves(self):
         for i in range(self.board.shape[0]):
             for j in range(self.board.shape[1]):
-                if self.board[i][j] == 0:
+                if self.board[i][j] == '0.0':
                     self.moves.append((i,j))
+
         return self.moves
 
     def playMove(self,coord_X,coord_Y):
         self.board[coord_X][coord_Y] = self.currentPlayer
+        return self.board
 
     def playerLoop(self):
+        moves = self.legalMoves()
+        move =  random.choice(moves)
+        self.board = self.playMove(move[0],move[1])
+        moves.remove((move[0],move[1]))
+        self.currentPlayer = self.changePlayer()
+        print(self.board)
+        print(self.currentPlayer)
 
-        while self.moves:
-            move = random.choice(self.legalMoves())
-            for i,j in move:
-                self.playMove(i,j)
-            self.moves = self.legalMoves()
-        return self.board
 
     def printBoard(self):
         print(self.board)
@@ -109,5 +113,4 @@ if __name__ == '__main__':
     #B0 = Board(arr)
     P0 = Player(arr)
     P0.playerLoop()
-    P0.printBoard()
 
