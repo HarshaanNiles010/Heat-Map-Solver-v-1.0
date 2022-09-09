@@ -102,9 +102,25 @@ class Player:
             moves.remove((move[0],move[1]))
             self.changePlayer()
 
+    def checkRowWin(self):
+        for i in range(self.board.shape[0]):
+            if np.all(self.board[i] == 'B' or self.board[i] == 'W'):
+                print("It's a row win")
 
-    def printBoard(self):
-        print(self.board)
+    def checkColWin(self):
+        transArr = self.board.T
+        for i in range(transArr.shape[0]):
+            if np.all(transArr[i] == 'B' or transArr[i] == 'W'):
+                print("It's a column win")
+
+    def checkPdiWin(self):
+        for i in range(self.board.shape[0]):
+            for j in range(self.board.shape[1]):
+                if i == j and (self.board[i][j] == 'B' or self.board[i][j] == 'W'):
+                    print("It's a column win")
+
+
+
 
 if __name__ == '__main__':
     arr = np.zeros((5, 5))
