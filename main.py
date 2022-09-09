@@ -94,12 +94,16 @@ class Player:
 
     def playerLoop(self):
         moves = self.legalMoves()
-        move =  random.choice(moves)
-        self.board = self.playMove(move[0],move[1])
-        moves.remove((move[0],move[1]))
-        self.currentPlayer = self.changePlayer()
-        print(self.board)
-        print(self.currentPlayer)
+        while len(moves) != 0:
+            move =  random.choice(moves)
+            self.board = self.playMove(move[0],move[1])
+            moves.remove((move[0],move[1]))
+            if self.currentPlayer == 'B':
+                self.currentPlayer = 'W'
+            elif self.currentPlayer == 'W':
+                self.currentPlayer = 'B'
+            print(self.board)
+        #print(self.currentPlayer)
 
 
     def printBoard(self):
