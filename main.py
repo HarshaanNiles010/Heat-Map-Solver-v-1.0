@@ -104,9 +104,9 @@ class Player:
 
     def checkRowWin(self):
         for i in range(self.board.shape[0]):
-            if np.all(self.board[i] == 'B'):
+            if np.all(self.board[i] == 'B' ):
                 return 'B'
-            elif np.all(self.board[i] == 'W'):
+            elif np.all(self.board[i] == 'W' ):
                 return 'W'
 
     def checkColWin(self):
