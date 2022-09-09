@@ -69,9 +69,11 @@ class Player:
 
     def changePlayer(self):
         if self.currentPlayer == 'B':
-            return self.currentPlayer == 'W'
+            self.currentPlayer = 'W'
+            return self.currentPlayer
         elif self.currentPlayer == 'W':
-            return self.currentPlayer == 'B'
+            self.currentPlayer = 'B'
+            return self.currentPlayer
 
     def getPlayer(self):
         return self.currentPlayer
@@ -98,12 +100,7 @@ class Player:
             move =  random.choice(moves)
             self.board = self.playMove(move[0],move[1])
             moves.remove((move[0],move[1]))
-            if self.currentPlayer == 'B':
-                self.currentPlayer = 'W'
-            elif self.currentPlayer == 'W':
-                self.currentPlayer = 'B'
-            print(self.board)
-        #print(self.currentPlayer)
+            self.changePlayer()
 
 
     def printBoard(self):
