@@ -128,8 +128,10 @@ class Player:
     def checkSdiWin(self):
         for i in range(self.board.shape[0]):
             for j in range(self.board.shape[1]):
-                if -i == -j and (self.board[-i][-j] == 'B' or self.board[-i][-j] == 'W'):
-                    print("It's a secondary diagonal win")
+                if -i == -j and self.board[-i][-j] == 'B':
+                    return 'B'
+                elif -i == -j and self.board[-i][-j] == 'W':
+                    return 'W'
 
 
 if __name__ == '__main__':
