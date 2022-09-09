@@ -19,12 +19,28 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(B0.get_y_dim(), 5)
 
     def test_check_Row_Win(self):
-        arr = np.zeros((5,5))
+        arr = [
+           ['B','B','B','B','B'],
+           ['0.0','0.0','0.0','0.0','0.0'],
+           ['0.0', '0.0', '0.0', '0.0', '0.0'],
+           ['0.0', '0.0', '0.0', '0.0', '0.0'],
+           ['0.0', '0.0', '0.0', '0.0', '0.0'],
+               ]
+        arr = np.array(arr)
         P0 = Player(arr)
-        pass
+        self.assertEqual(P0.checkRowWin(),'B')
 
     def test_check_Col_Win(self):
-        pass
+        arr = [
+            ['W', 'B', 'B', 'B', 'B'],
+            ['W', '0.0', '0.0', '0.0', '0.0'],
+            ['W', '0.0', '0.0', '0.0', '0.0'],
+            ['W', '0.0', '0.0', '0.0', '0.0'],
+            ['W', '0.0', '0.0', '0.0', '0.0'],
+        ]
+        arr = np.array(arr)
+        P0 = Player(arr)
+        self.assertEqual(P0.checkColWin(), 'W')
 
     def test_check_Pdi_Win(self):
         pass
