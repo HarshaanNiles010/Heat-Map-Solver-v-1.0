@@ -43,7 +43,16 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(P0.checkColWin(), 'W')
 
     def test_check_Pdi_Win(self):
-        pass
+        arr = [
+            ['W', '0.0', '0.0', '0.0', '0.0'],
+            ['0.0', 'W', '0.0', '0.0', '0.0'],
+            ['0.0', '0.0', 'W', '0.0', '0.0'],
+            ['0.0', '0.0', '0.0', 'W', '0.0'],
+            ['0.0', '0.0', '0.0', '0.0', 'W'],
+        ]
+        arr = np.array(arr)
+        P0 = Player(arr)
+        self.assertEqual(P0.checkPdiWin(), 'W')
 
     def test_check_Sdi_Win(self):
         pass
