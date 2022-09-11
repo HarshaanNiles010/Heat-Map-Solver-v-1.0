@@ -142,6 +142,10 @@ class Player:
                 elif -i == -j and self.board[-i][-j] == 'W':
                     return 'W'
 
+    def checkDraw(self):
+        if not (self.checkRowWin() or self.checkColWin() or self.checkPdiWin() or self.checkSdiWin()):
+            return None
+
 
 if __name__ == '__main__':
     arr = np.zeros((5, 5))
