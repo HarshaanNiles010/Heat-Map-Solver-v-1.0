@@ -98,6 +98,8 @@ class Player:
         self.board[coord_X][coord_Y] = self.currentPlayer
         self.boardCopy.rowPop(coord_X,coord_Y)
         self.boardCopy.colPop(coord_X,coord_Y)
+        self.boardCopy.primeDiagPop(coord_X,coord_Y)
+        self.boardCopy.seconDiagPop(coord_X,coord_Y)
         self.boardCopy.display()
         return self.board
 
