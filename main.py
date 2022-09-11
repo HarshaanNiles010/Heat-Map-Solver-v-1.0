@@ -60,12 +60,16 @@ class Board:
             self.tempArr[i][j] = 1
         return self.tempArr
 
+    def display(self):
+        print(self.tempArr)
+
 class Player:
     def __init__(self,arr):
         self.currentPlayer = 'B'
         self.board = arr.copy()
         self.board = self.board.astype(str)
         self.moves = []
+        self.boardCopy = Board(arr)
 
     def changePlayer(self):
         if self.currentPlayer == 'B':
@@ -92,6 +96,9 @@ class Player:
 
     def playMove(self,coord_X,coord_Y):
         self.board[coord_X][coord_Y] = self.currentPlayer
+        self.boardCopy.rowPop(coord_X,coord_Y)
+        self.boardCopy.colPop(coord_X,coord_Y)
+        self.boardCopy.display()
         return self.board
 
     def playerLoop(self):
@@ -141,5 +148,5 @@ if __name__ == '__main__':
     coord_X, coord_Y = 1, 4
     #B0 = Board(arr)
     P0 = Player(arr)
-    P0.playerLoop()
+    P0.playMove(coord_X,coord_Y)
 
