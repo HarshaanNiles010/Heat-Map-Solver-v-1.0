@@ -1,17 +1,18 @@
+from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
-import numpy
+import numpy as np
 
-# Set up grid and test data
-nx, ny = 256, 1024
-x = range(nx)
-y = range(ny)
 
-data = numpy.random.random((nx, ny))
+np.random.seed(1234)
+fig = plt.figure()
+ax1 = fig.add_subplot(111, projection='3d')
+A = np.random.randint(5, size=(25, 10))
 
-hf = plt.figure()
-ha = hf.add_subplot(111, projection='3d')
+x = np.array([[i] * 10 for i in range(25)]).ravel() # x coordinates of each bar
+y = np.array([i for i in range(10)] * 25) # y coordinates of each bar
+z = np.zeros(25*10) # z coordinates of each bar
+dx = np.ones(25*10) # length along x-axis of each bar
+dy = np.ones(25*10) # length along y-axis of each bar
+dz = A.ravel() # length along z-axis of each bar (height)
 
-X, Y = numpy.meshgrid(x, y)  # `plot_surface` expects `x` and `y` data to be 2D
-ha.plot_surface(X, Y, data)
-
-plt.show()
+ax1.bar3d(x, y, z, dx, dy, dz)
