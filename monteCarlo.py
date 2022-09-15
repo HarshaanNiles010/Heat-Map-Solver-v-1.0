@@ -30,6 +30,10 @@ class MonteCarlo:
             self.current_player = "X"
 
     def Expansion(self):
+        moves = self.get_legal_moves()
+        while(len(moves) != 0):
+            self.play_move()
+            self.change_player()
         pass
 
     def Simulation(self):
