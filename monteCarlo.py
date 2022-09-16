@@ -40,7 +40,8 @@ class MonteCarlo:
         pass
 
     def backTracking(self):
-        pass
+        if len(self.get_legal_moves()) >= 2:
+            return len(self.get_legal_moves())
 
 
 class ttt:
