@@ -37,6 +37,8 @@ class MonteCarlo:
         pass
 
     def Simulation(self):
+        #Checking for the win condition here if
+        self.Expansion()
         pass
 
     def backTracking(self):
