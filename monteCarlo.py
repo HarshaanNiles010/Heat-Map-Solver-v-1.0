@@ -34,7 +34,7 @@ class MonteCarlo:
         while(len(moves) != 0):
             self.play_move()
             self.change_player()
-        pass
+        
 
     def Simulation(self):
         #Checking for the win condition here if
